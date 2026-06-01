@@ -1,0 +1,4 @@
+# NEVER commit Vault unseal keys / root token
+vault-keys.json
+*.key
+*.pem
