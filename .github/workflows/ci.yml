@@ -31,4 +31,4 @@ jobs:
 
       - name: Validate Kubernetes manifests
         run: |
-          find . -name "*.yaml" -o -name "*.yml" | xargs kubeconform -strict -ignore-missing-schemas
+          find . -path './.github' -prune -o -name 'values*.yaml' -prune -o \( -name '*.yaml' -o -name '*.yml' \) -print | xargs kubeconform -strict -ignore-missing-schemas
