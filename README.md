@@ -1,8 +1,18 @@
 # vault-on-kubernetes
 
 Deploy **HashiCorp Vault** on Kubernetes in **High Availability** mode with **integrated Raft
-storage** and **Kubernetes auth**, using the official Helm chart. Includes the values, init/unseal
-steps, and a worked example of a pod retrieving a secret via the Kubernetes auth method.
+storage** and **Kubernetes auth**, using the official Helm chart. This repo is **not** a standalone
+Helm chart — it provides a `values.yaml` configuration for the
+[official `hashicorp/vault` chart](https://github.com/hashicorp/vault-helm), along with init/unseal
+scripts and a worked example of a pod retrieving a secret via the Kubernetes auth method.
+
+## Prerequisites
+
+| Tool | Minimum Version | Install |
+|------|----------------|---------|
+| Kubernetes cluster | 1.26+ | Minikube, EKS, GKE, etc. |
+| Helm | 3.12+ | `brew install helm` |
+| kubectl | 1.28+ | `brew install kubectl` |
 
 This repo is the hands-on companion to the article
 *"Deploying and Managing HashiCorp Vault in Kubernetes with HA and Raft Storage"*
@@ -44,7 +54,11 @@ graph TD
 ## Quick start
 
 ```bash
-# 1. Install Vault in HA + Raft mode
+# Clone the repo
+git clone https://github.com/durrello/vault-on-kubernetes.git
+cd vault-on-kubernetes
+
+# 1. Install Vault in HA + Raft mode (uses the official hashicorp/vault Helm chart)
 ./scripts/install.sh
 
 # 2. Initialize and unseal (saves keys locally — protect them!)
